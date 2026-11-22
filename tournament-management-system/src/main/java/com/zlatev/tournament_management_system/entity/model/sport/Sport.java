@@ -1,6 +1,6 @@
 package com.zlatev.tournament_management_system.entity.model.sport;
 
-import com.zlatev.tournament_management_system.entity.model.scoring.ScoringRule;
+import com.zlatev.tournament_management_system.entity.model.scoring.ScoringType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,9 +25,6 @@ public class Sport {
     @Column(name = "sport_name", nullable = false)
     private String sportName;
 
-    @Column(name = "scoringRule", nullable = false)
-    private Integer scoringRule;
-
     @OneToMany(mappedBy = "sport", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ScoringRule> scoringRules = new ArrayList<>();
+    private List<ScoringType> scoringTypes = new ArrayList<>();
 }

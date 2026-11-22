@@ -37,6 +37,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/tournaments/**", "/api/matches/**").permitAll()
                         .requestMatchers("/api/matches/*/score").hasAnyRole("REFEREE", "ORGANIZER")
                         .requestMatchers(HttpMethod.POST, "/api/tournaments/**").hasRole("ORGANIZER")
+                        .requestMatchers(HttpMethod.GET, "/api/sports/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());
