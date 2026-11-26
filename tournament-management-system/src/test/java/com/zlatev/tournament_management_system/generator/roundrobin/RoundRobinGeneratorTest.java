@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class RoundRobinGeneratorTest {
 
-    private final RoundRobinGenerator generator = new RoundRobinGenerator();
+    private final RoundRobinGenerator generator = new RoundRobinGenerator(true);
 
     private List<Team> teams(int count) {
         List<Team> list = new ArrayList<>();

@@ -1,7 +1,9 @@
 package com.zlatev.tournament_management_system.web.fixture;
 
+import com.zlatev.tournament_management_system.dto.fixture.GenerateFixturesRequestDTO;
 import com.zlatev.tournament_management_system.dto.match.MatchResponseDTO;
 import com.zlatev.tournament_management_system.service.fixture.FixtureService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,8 +23,9 @@ public class FixtureController {
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasRole('ORGANIZER')")
     public List<MatchResponseDTO> generate(@PathVariable UUID tournamentId,
+                                           @Valid @RequestBody(required = false) GenerateFixturesRequestDTO request,
                                            Authentication authentication) {
-        return fixtureService.generateFixtures(tournamentId, authentication.getName());
+        return fixtureService.generateFixtures(tournamentId, request, authentication.getName());
     }
 
     @GetMapping("/matches")

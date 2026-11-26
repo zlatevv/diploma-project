@@ -8,14 +8,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RoundRobinGenerator implements Generator {
+    private final boolean doubleRoundRobin;
+
+    public RoundRobinGenerator(boolean doubleRoundRobin) {
+        this.doubleRoundRobin = doubleRoundRobin;
+    }
+
     @Override
     public List<Fixture> generate(List<Team> teams) {
         List<Fixture> legs = generateLeg(teams);
+
+        if (!doubleRoundRobin) {
+            return legs;      // single round-robin: stop here
+        }
+
         int roundsPerLeg = (teams.size() % 2 == 0 ? teams.size() : teams.size() + 1) - 1;
 
         List<Fixture> fixtures = new ArrayList<>(legs);
         for (Fixture f : legs) {
-            fixtures.add(new Fixture(f.round() + roundsPerLeg, f.awayTeam(), f.homeTeam()));
+            fixtures.add(new Fixture(f.round() + roundsPerLeg, f.awayTeam(), f.homeTeam(), null));
         }
         return fixtures;
     }
@@ -36,9 +47,9 @@ public class RoundRobinGenerator implements Generator {
 
                 if (homeTeam != null && awayTeam != null) {
                     if (i == 0 && round % 2 == 0) {
-                        fixtures.add(new Fixture(round, awayTeam, homeTeam));
+                        fixtures.add(new Fixture(round, awayTeam, homeTeam, null));
                     } else {
-                        fixtures.add(new Fixture(round, homeTeam, awayTeam));
+                        fixtures.add(new Fixture(round, homeTeam, awayTeam, null));
                     }
                 }
             }

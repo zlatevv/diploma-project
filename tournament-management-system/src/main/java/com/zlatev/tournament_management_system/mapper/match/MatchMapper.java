@@ -16,6 +16,7 @@ public class MatchMapper {
                 .homeScore(0)
                 .awayScore(0)
                 .status(MatchStatus.SCHEDULED)
+                .group(f.group())
                 .build();
     }
 

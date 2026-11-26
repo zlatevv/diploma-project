@@ -1,6 +1,7 @@
 package com.zlatev.tournament_management_system.entity.model.match;
 
 import com.zlatev.tournament_management_system.entity.enums.match.MatchStatus;
+import com.zlatev.tournament_management_system.entity.model.group.Group;
 import com.zlatev.tournament_management_system.entity.model.team.Team;
 import com.zlatev.tournament_management_system.entity.model.tournament.Tournament;
 import com.zlatev.tournament_management_system.entity.model.user.User;
@@ -48,4 +49,8 @@ public class Match {
 
     @Enumerated(EnumType.STRING)
     private MatchStatus status = MatchStatus.SCHEDULED;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "group_id")
+    private Group group;
 }
