@@ -22,6 +22,6 @@ public class TournamentMapper {
         return new TournamentResponseDTO(
                 t.getId(), t.getName(), t.getFormat(), t.getStatus(),
                 t.getSport().getId(), t.getSport().getSportName(),
-                t.getOrganizer().getUsername(), teamCount);
+                t.getOrganizer().getEmail(), teamCount);
     }
 }

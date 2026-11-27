@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class SportMapper {
     public static SportResponseDTO toSportResponseDTO(Sport sport) {
         return new SportResponseDTO(
+                sport.getId(),
                 sport.getSportName(),
                 sport.getScoringTypes()
         );

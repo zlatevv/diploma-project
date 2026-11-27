@@ -35,10 +35,10 @@ public class TournamentService {
 
     @Transactional
     @CacheEvict(value = {"tournaments", "tournament"}, allEntries = true)
-    public TournamentResponseDTO createTournament(CreateTournamentRequestDTO dto, String username) {
+    public TournamentResponseDTO createTournament(CreateTournamentRequestDTO dto, String email) {
         Sport sport = sportRepository.findById(dto.sportId())
                 .orElseThrow(() -> new SportDoesNotExistException("Sport does not exist!"));
-        User organizer = userRepository.findByUsername(username)
+        User organizer = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UserNotFoundException("User not found!"));
 
         Tournament saved = tournamentRepository.save(TournamentMapper.toTournament(dto, sport, organizer));
@@ -85,11 +85,11 @@ public class TournamentService {
         tournamentRepository.delete(tournament);
     }
 
-    public Tournament findOwnedDraftTournament(UUID tournamentId, String username) {
+    public Tournament findOwnedDraftTournament(UUID tournamentId, String email) {
         Tournament tournament = tournamentRepository.findById(tournamentId)
                 .orElseThrow(() -> new TournamentNotFoundException("Tournament does not exist!"));
 
-        if (!tournament.getOrganizer().getUsername().equals(username)) {
+        if (!tournament.getOrganizer().getEmail().equals(email)) {
             throw new NotTournamentOwnerException("You are not the organizer of this tournament!");
         }
         if (tournament.getStatus() != TournamentStatus.DRAFT) {

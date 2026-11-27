@@ -12,7 +12,7 @@ public record TournamentResponseDTO(
         TournamentStatus status,
         UUID sportId,
         String sportName,
-        String organizerName,
+        String organizerEmail,
         Integer teamCount
 ) {
 }

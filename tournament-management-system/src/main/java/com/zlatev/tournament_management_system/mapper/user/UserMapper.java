@@ -23,7 +23,7 @@ public class UserMapper {
 
     public static UserResponseDTO toUserResponse(User user) {
         return new UserResponseDTO(
-                user.getUsername(),
+                user.getId(),
                 user.getFullName(),
                 user.getEmail(),
                 user.getRole());

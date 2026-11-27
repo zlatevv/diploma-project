@@ -4,6 +4,7 @@ import com.zlatev.tournament_management_system.dto.user.LoginRequestDTO;
 import com.zlatev.tournament_management_system.dto.user.LoginResponseDTO;
 import com.zlatev.tournament_management_system.dto.user.RegisterRequestDTO;
 import com.zlatev.tournament_management_system.dto.user.UserResponseDTO;
+import com.zlatev.tournament_management_system.entity.enums.user.Role;
 import com.zlatev.tournament_management_system.entity.model.user.User;
 import com.zlatev.tournament_management_system.exception.user.UserAlreadyExistsException;
 import com.zlatev.tournament_management_system.exception.user.UserNotFoundException;
@@ -63,7 +64,7 @@ public class UserService {
         String token = jwtService.generateToken(principal.getUsername(), principal.getRole().name());
 
         UserResponseDTO userResponse = new UserResponseDTO(
-                principal.getUsername(),
+                principal.getUserId(),
                 principal.getFullName(),
                 principal.getEmail(),
                 principal.getRole()
@@ -76,5 +77,18 @@ public class UserService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException("User was not found!"));
         return UserMapper.toUserResponse(user);
+    }
+
+    @Transactional
+    public User updateUserRole(UUID userId, Role newRole) {
+        if (newRole == Role.ADMIN) {
+            throw new IllegalArgumentException("Promoting a user to ADMIN is not allowed via this endpoint");
+        }
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found: " + userId));
+
+        user.setRole(newRole);
+        return userRepository.save(user);
     }
 }
