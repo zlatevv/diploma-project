@@ -1,11 +1,16 @@
 package com.zlatev.tournament_management_system.exception;
 
+import com.zlatev.tournament_management_system.exception.match.*;
 import com.zlatev.tournament_management_system.exception.scoring.InvalidScoringData;
+import com.zlatev.tournament_management_system.exception.scoring.NoScoreToUndoException;
+import com.zlatev.tournament_management_system.exception.scoring.ScoringTypeNotFoundException;
 import com.zlatev.tournament_management_system.exception.sport.SportAlreadyExistsException;
 import com.zlatev.tournament_management_system.exception.sport.SportDoesNotExistException;
 import com.zlatev.tournament_management_system.exception.team.TeamAlreadyExistsException;
 import com.zlatev.tournament_management_system.exception.team.TeamNotFoundException;
+import com.zlatev.tournament_management_system.exception.team.TeamNotInMatchException;
 import com.zlatev.tournament_management_system.exception.tournament.*;
+import com.zlatev.tournament_management_system.exception.user.InvalidRefereeException;
 import com.zlatev.tournament_management_system.exception.user.UserAlreadyExistsException;
 import com.zlatev.tournament_management_system.exception.user.UserNotFoundException;
 
@@ -29,7 +34,9 @@ public class GlobalExceptionHandler {
             UserNotFoundException.class,
             SportDoesNotExistException.class,
             TeamNotFoundException.class,
-            TournamentNotFoundException.class
+            TournamentNotFoundException.class,
+            MatchNotFoundException.class,
+            ScoringTypeNotFoundException.class
     })
     public ResponseEntity<Map<String, Object>> handleNotFound(RuntimeException ex) {
         return buildResponse(HttpStatus.NOT_FOUND, ex.getMessage());
@@ -40,7 +47,11 @@ public class GlobalExceptionHandler {
             UserAlreadyExistsException.class,
             SportAlreadyExistsException.class,
             TeamAlreadyExistsException.class,
-            TournamentNotEditableException.class
+            TournamentNotEditableException.class,
+            NoScoreToUndoException.class,
+            InvalidMatchStateException.class,
+            MatchNotLiveException.class,
+            MatchAlreadyFinishedException.class
     })
     public ResponseEntity<Map<String, Object>> handleConflict(RuntimeException ex) {
         return buildResponse(HttpStatus.CONFLICT, ex.getMessage());
@@ -53,7 +64,9 @@ public class GlobalExceptionHandler {
             NotEnoughTeamsException.class,
             UnsupportedTournamentFormatException.class,
             IllegalArgumentException.class,
-            IllegalStateException.class
+            IllegalStateException.class,
+            InvalidRefereeException.class,
+            TeamNotInMatchException.class
     })
     public ResponseEntity<Map<String, Object>> handleBadRequest(RuntimeException ex) {
         return buildResponse(HttpStatus.BAD_REQUEST, ex.getMessage());
@@ -95,7 +108,8 @@ public class GlobalExceptionHandler {
     // 403 FORBIDDEN (Not owner / insufficient role)
     @ExceptionHandler({
             NotTournamentOwnerException.class,
-            AccessDeniedException.class
+            AccessDeniedException.class,
+            NotMatchOfficialException.class
     })
     public ResponseEntity<Map<String, Object>> handleForbidden(RuntimeException ex) {
         return buildResponse(HttpStatus.FORBIDDEN, ex.getMessage());

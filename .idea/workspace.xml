@@ -5,23 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b72c531b-37db-44fd-b9f3-d4cd98e7f80c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/dto/fixture/GenerateFixturesRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/entity/model/group/Group.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/exception/tournament/InvalidNumberOfTeamsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/repository/group/GroupRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/scheduler/groupplayoff/GroupsPlayoffConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/scheduler/groupplayoff/GroupsPlayoffGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/entity/model/fixture/Fixture.java" beforeDir="false" afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/entity/model/fixture/Fixture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/entity/model/match/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/entity/model/match/Match.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/entity/model/tournament/Tournament.java" beforeDir="false" afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/entity/model/tournament/Tournament.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/component/MatchUpdateBroadcaster.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/config/WebSocketConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/dto/match/AddScoreRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/dto/match/MatchEventResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/dto/match/MatchUpdatedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/dto/user/AssignRefereeRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/exception/match/InvalidMatchStateException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/exception/match/MatchAlreadyFinishedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/exception/match/MatchNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/exception/match/MatchNotLiveException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/exception/match/NotMatchOfficialException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/exception/scoring/NoScoreToUndoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/exception/scoring/ScoringTypeNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/exception/team/TeamNotInMatchException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/exception/tournament/TournamentNotStartedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/exception/user/InvalidRefereeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/service/match/MatchScoringService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/service/match/MatchService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/web/match/MatchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/dto/scoring/ScoringTypeResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/dto/scoring/ScoringTypeResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/entity/model/match/MatchEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/entity/model/match/MatchEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/exception/GlobalExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/mapper/match/MatchMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/mapper/match/MatchMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/scheduler/knockout/KnockoutGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/scheduler/knockout/KnockoutGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/scheduler/roundrobin/RoundRobinGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/scheduler/roundrobin/RoundRobinGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/service/fixture/FixtureService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/service/fixture/FixtureService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/web/fixture/FixtureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/web/fixture/FixtureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tournament-management-system/src/test/java/com/zlatev/tournament_management_system/generator/roundrobin/RoundRobinGeneratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tournament-management-system/src/test/java/com/zlatev/tournament_management_system/generator/roundrobin/RoundRobinGeneratorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/repository/match/MatchEventRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/repository/match/MatchEventRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/repository/match/MatchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/tournament-management-system/src/main/java/com/zlatev/tournament_management_system/repository/match/MatchRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +45,8 @@
         <option value="Interface" />
         <option value="AnnotationType" />
         <option value="Exception" />
-        <option value="Class" />
         <option value="Record" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -59,6 +69,65 @@
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000000103521094" />
+      <entry key="S5" value="1.000639751834644" />
+      <entry key="S10" value="1.0252933160072761" />
+      <entry key="S30" value="1.2935408787435123" />
+      <entry key="S60" value="1.5417941828858486" />
+      <entry key="M2" value="1.7362999070500769" />
+      <entry key="M5" value="1.9251819027841854" />
+      <entry key="M10" value="2.2017535292484824" />
+      <entry key="M15" value="2.471771514132047" />
+      <entry key="M30" value="3.5485370109224945" />
+      <entry key="H1" value="8.36473931164603" />
+      <entry key="H2" value="18.41242230731148" />
+      <entry key="H4" value="29.277727017707097" />
+      <entry key="D1" value="44.12914395291948" />
+      <entry key="W1" value="47.4251769264449" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="1.9389575575777245E-187" />
+      <entry key="S30" value="7.671229561575594E-63" />
+      <entry key="S60" value="1.4196009882996875E-31" />
+      <entry key="M2" value="7.876020771370315E-16" />
+      <entry key="M5" value="2.5577431190354423E-6" />
+      <entry key="M10" value="0.003952241781242185" />
+      <entry key="M15" value="0.048048828454580146" />
+      <entry key="M30" value="0.7176024118185155" />
+      <entry key="H1" value="3.4585906822432624" />
+      <entry key="H2" value="8.27352152762922" />
+      <entry key="H4" value="13.08718029336635" />
+      <entry key="D1" value="19.389839240981626" />
+      <entry key="W1" value="20.76156283004487" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.536492233362913E-5" />
+      <entry key="MS500" value="0.10896977994213275" />
+      <entry key="S2" value="0.574548271010489" />
+      <entry key="S5" value="0.8016497175946786" />
+      <entry key="S10" value="0.9167384495939835" />
+      <entry key="S30" value="1.2424451796937976" />
+      <entry key="S60" value="1.5096326569535354" />
+      <entry key="M2" value="1.7176305164975685" />
+      <entry key="M5" value="1.9168727705731117" />
+      <entry key="M10" value="2.2012410077114803" />
+      <entry key="M15" value="2.516605951233842" />
+      <entry key="M30" value="4.263429169856263" />
+      <entry key="H1" value="11.819238020561437" />
+      <entry key="H2" value="26.681165220079734" />
+      <entry key="H4" value="42.36107238430295" />
+      <entry key="D1" value="63.51801859920813" />
+      <entry key="W1" value="68.18659169408795" />
+    </decayedShown>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6,
   &quot;fromUser&quot;: false
@@ -71,25 +140,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.TournamentManagementSystemApplication.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.RoundRobinGeneratorTest.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.TournamentManagementSystemApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/GRIGS/Documents/diploma-project&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.TournamentManagementSystemApplication.executor": "Run",
+    "JUnit.RoundRobinGeneratorTest.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.TournamentManagementSystemApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/GRIGS/Documents/diploma-project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "MavenSettings"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Spring Boot.TournamentManagementSystemApplication">
     <configuration name="TournamentManagementSystemApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.zlatev.tournament_management_system.TournamentManagementSystemApplication" />
@@ -163,7 +237,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.33813.25" />
+        <option value="bundled-jdk-30f59d01ecdd-ac68fc9d2b05-intellij.indexing.shared.core-IU-263.7307.200" />
       </set>
     </attachedChunks>
   </component>
@@ -176,6 +250,9 @@
       <updated>1792588621892</updated>
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="UnknownFeatures">
     <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
