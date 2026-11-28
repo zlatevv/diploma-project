@@ -15,6 +15,7 @@ public class TournamentMapper {
                 .status(TournamentStatus.DRAFT)
                 .sport(sport)
                 .organizer(organizer)
+                .format(dto.tournamentFormat())
                 .build();
     }
 

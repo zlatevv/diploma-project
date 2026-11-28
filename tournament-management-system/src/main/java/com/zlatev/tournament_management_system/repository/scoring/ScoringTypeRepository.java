@@ -6,9 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 @Repository
 public interface ScoringTypeRepository extends JpaRepository<ScoringType, UUID> {
-    Sport findBySportId(UUID sportId);
+    List<ScoringType> findBySportId(UUID sportId);
+    boolean existsBySportIdAndNameIgnoreCase(UUID sportId, String name);
 }

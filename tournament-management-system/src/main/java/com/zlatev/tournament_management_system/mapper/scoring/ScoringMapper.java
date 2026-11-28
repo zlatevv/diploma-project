@@ -18,9 +18,10 @@ public class ScoringMapper {
 
     public static ScoringTypeResponseDTO toScoringResponse(ScoringType scoringType) {
         return new ScoringTypeResponseDTO(
+                scoringType.getId(),
                 scoringType.getName(),
                 scoringType.getPoints(),
-                scoringType.getId()
+                scoringType.getSport().getId()
         );
     }
 }

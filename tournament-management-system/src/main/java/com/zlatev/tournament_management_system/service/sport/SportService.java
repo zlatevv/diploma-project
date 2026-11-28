@@ -88,6 +88,7 @@ public class SportService {
         sportRepository.deleteById(sportId);
     }
 
+    @Transactional
     public ScoringTypeResponseDTO addScoringType(UUID sportId, CreateScoringTypeDTO createScoringTypeDTO) {
         Sport sport = sportRepository.findById(sportId)
                 .orElseThrow(() -> new SportDoesNotExistException("Sport does not exist!"));
@@ -96,27 +97,27 @@ public class SportService {
             throw new InvalidScoringData("Scoring name is blank!");
         }
 
-        if (createScoringTypeDTO.points() ==  null || createScoringTypeDTO.points() == 0) {
-            throw new InvalidScoringData("Scoring points are blank!");
+        if (createScoringTypeDTO.points() == null || createScoringTypeDTO.points() <= 0) {
+            throw new InvalidScoringData("Scoring points must be positive!");
+        }
+
+        if (scoringTypeRepository.existsBySportIdAndNameIgnoreCase(sportId, createScoringTypeDTO.name().trim())) {
+            throw new InvalidScoringData("Scoring type '" + createScoringTypeDTO.name() + "' already exists for this sport!");
         }
 
         ScoringType scoringType = ScoringMapper.toScoringType(createScoringTypeDTO);
         scoringType.setSport(sport);
 
-        sport.getScoringTypes().add(scoringType);
+        ScoringType saved = scoringTypeRepository.save(scoringType);
 
-        sportRepository.save(sport);
-        scoringTypeRepository.save(scoringType);
-
-        return ScoringMapper.toScoringResponse(scoringType);
+        return ScoringMapper.toScoringResponse(saved);
     }
 
-    @Transactional
     public List<ScoringTypeResponseDTO> getScoringTypes(UUID sportId) {
         if (!sportRepository.existsById(sportId)) {
             throw new SportDoesNotExistException("Sport does not exist!");
         }
-        return scoringTypeRepository.findBySportId(sportId).getScoringTypes()
+        return scoringTypeRepository.findBySportId(sportId)
                 .stream()
                 .map(ScoringMapper::toScoringResponse)
                 .toList();

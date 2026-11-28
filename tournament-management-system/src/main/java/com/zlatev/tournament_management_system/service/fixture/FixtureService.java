@@ -51,8 +51,13 @@ public class FixtureService {
             throw new NotEnoughTeamsException("A tournament needs at least 2 teams!");
         }
 
+        boolean playsTwice = request == null
+                || (request.playsEachOtherTwice() == null && request.doubleRoundRobin() == null)
+                || Boolean.TRUE.equals(request.playsEachOtherTwice())
+                || Boolean.TRUE.equals(request.doubleRoundRobin());
+
         Generator generator = switch (tournament.getFormat()) {
-            case LEAGUE -> new RoundRobinGenerator(request.playsEachOtherTwice());
+            case LEAGUE -> new RoundRobinGenerator(playsTwice);
             case KNOCKOUT -> new KnockoutGenerator();
             case GROUPS_PLAYOFF -> new GroupsPlayoffGenerator(buildGroupsConfig(request, tournament));
         };
